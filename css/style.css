@@ -1,0 +1,531 @@
+/* Import Roboto font */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+/* Global Styles */
+:root {
+  --main-color: #e9204f;
+  --black: #191919;
+  --bg: #101010;
+  --font: #fff;
+  --border: .1rem solid rgba(255, 255, 255, .3);
+}
+
+* {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  border: none;
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: .3s linear;
+}
+
+html {
+  font-size: 62.5%; /* setting the base font size for all pages to be 16px */
+  overflow-x: hidden;/*manages the content overflow of the box*/
+  scroll-behavior: smooth;
+}
+/*setting the scroll bar so that it matches our page perfectly*/
+html::-webkit-scrollbar {
+  width: .8rem;
+}
+
+
+html::-webkit-scrollbar-thumb {
+  background: #eee;
+  border-radius: 4rem;
+}
+
+body {
+  background: var(--bg);
+}
+
+section {
+  padding: 4rem 7%;
+}
+
+/* Button Styles */
+.btn {
+  margin-top: 1rem;
+  display: inline-block;
+  padding: 2rem 4rem;
+  font-size: 1.7rem;
+  color: var(--font);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+}
+
+.btn span {
+  position: relative;/* Maintains the relative positioning of the text.*/
+  z-index: 3;  /*Sets the stacking order of the text to be above other elements.*/
+}
+
+.btn:after {/* to create an additional element that covers the entire button*/
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  right: 0%;/* Initially, the right: 0%; positions the pseudo-element at the right side of the button.*/
+  top: 0%;
+  background: var(--main-color);
+  transition: .5s;
+  z-index: 1;
+}
+
+.btn:hover:after {
+  right: -100%;/*On hover (btn:hover), the right: -100%; shifts the pseudo-element to the left by 100% of its width, creating a sliding effect.*/
+}
+
+.btn:hover {
+  color: var(--main-color);
+}
+
+/* Header Styles */
+.header {
+  background: transparent;
+  display: flex;/*used to put the header elemnets in flex */
+  color: var(--font);
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 7%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5000;
+}
+.logo {
+  display: flex; /* Use flexbox for the logo container */
+  align-items: center; /* Align items vertically in the logo container */
+}
+.logo img {
+  margin-right: 10px; /* Add margin between the logo image and the text */
+}
+
+.logo h1 {
+  margin: 0; /* Remove default margin for h1 element */
+}
+.header .logo h1 {
+  font-size: 3rem;
+  letter-spacing: .1rem;
+}
+
+.header .links a {/*styling the anchor tags*/
+  margin: 0 1rem;
+  color: var(--font);
+  font-size: 1.5rem;
+  letter-spacing: .1rem;
+}
+
+.header .links a:hover {
+  border-bottom: .1rem solid var(--main-color);/*creating a border at the bottom of the links*/
+  padding-bottom: .5rem;/* Adds padding at the bottom of the anchor tag when hovered, creating a visual effect.*/
+}
+
+.header .icons div {/*styling the social media links*/
+  color: var(--font);
+  cursor: pointer;
+  font-size: 1.8rem;
+  margin-left: 2rem;
+}
+
+.header .icons div:hover {/*changes the color when hovering on the social media tags*/
+  color: var(--main-color);
+}
+
+/* Home Page Styles */
+.home {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), url(../images/hero.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+
+.home .content h1 {
+  font-size: 6rem;
+  text-transform: uppercase;
+  color: var(--font);
+}
+
+.home .content p {
+  font-size: 2rem;
+  font-weight: lighter;
+  color: #eee;
+  line-height: 1.8;
+  padding: 1rem 0;
+}
+/* Footer Styles */
+.footer {
+  background: var(--black);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer .credit {
+  font-size: 2rem;
+  flex: 1 1 45rem;
+  color: var(--font);
+  font-weight: lighter;
+  padding: 1rem 0;
+}
+
+.footer .credit span {
+  color: var(--main-color);
+}
+
+.footer .links {
+  display: flex;
+  flex: 1 1 35rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.footer .links a {
+  color: var(--font);
+  font-size: 1.5rem;
+}
+
+.footer .links a:hover {
+  color: var(--main-color);
+}
+
+/* Media Queries */
+@media (max-width: 991px) {
+  html {
+    font-size: 55%;
+  }
+  section {
+    padding: 2rem;
+  }
+  .btn {
+    padding: 1.5rem 3rem;
+  }
+  .header {
+    padding: 1.5rem 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #menu-btn {
+    display: inline-block;
+  }
+  .header .links {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    background: var(--bg);
+    width: 100%;
+    height: calc(100vh - 9.5rem);
+    text-align: left;
+  }
+  .header .links a {
+    color: #ccc;
+    display: block;
+    margin: 1.5rem;
+    padding: 1rem;
+    border-bottom: var(--border);
+  }
+  .header .links a:hover {
+    padding-bottom: 1.5rem;
+  }
+  .header.active {
+    background: var(--black);
+  }
+  .header .links.active {
+    right: 0;
+  }
+  .contact .row .form input[type="submit"] {
+    width: 100%;
+    padding: 1.5rem;
+    font-size: 1.7rem;
+    color: #fff;
+    background: var(--main-color);
+    cursor: pointer;
+    border: none;
+    border-radius: .3rem;
+    transition: background .3s ease;
+  }
+
+  .contact .row .form input[type="submit"]:hover {
+    background: #e60033;
+  }
+}
+
+/* Media Queries for smaller screens */
+@media (max-width: 576px) {
+  html {
+    font-size: 50%;
+  }
+
+  .header {
+    padding: 1.5rem 1rem;
+  }
+
+  .home .content h1 {
+    font-size: 4rem;
+  }
+
+  .home .content p {
+    font-size: 1.6rem;
+  }
+
+  .service .box-container .box {
+    padding: 3rem;
+  }
+
+  .project .box-container .box,
+  .team .box-container .box,
+  .blog .box-container .box {
+    margin-bottom: 1.5rem;
+  }
+
+  .contact .row .content,
+  .contact .row .form {
+    flex: 1 1 100%;
+    padding: 1rem;
+  }
+
+  .contact .row .form input[type="text"],
+  .contact .row .form input[type="email"],
+  .contact .row .form textarea {
+    width: 100%;
+  }
+
+  .footer .credit,
+  .footer .links {
+    flex: 1 1 100%;
+    text-align: center;
+  }
+
+  .footer .links {
+    order: -1;
+  }
+}
+.sidhu{
+  height: 80px;
+  width: 80px;
+  border-radius: 20%;
+  border: 3px solid rgba(87, 95, 87, 0.725);
+}
+.content{
+  color: #ddd;
+}
+.gallery {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 50px;
+  box-shadow: 0 0 10px rgba(41, 37, 37, 0.1)
+}
+
+.image-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20px;
+  text-align: center; /* Center the heading */
+  font-size: 15px;
+}
+
+.special-offers-heading {
+  width: 100%; /* Ensure the heading spans the entire width */
+  margin-bottom: 20px; /* Add space below the heading */
+}
+
+.gallery-item {
+  width: 30%;
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+img:hover {
+  transform: scale(1.1);
+}
+
+.gallery-item p {
+  margin: 10px 0;
+  font-size: 20px;
+}
+  .gallery2 {
+    background-color: #ae9696;
+    padding: 10px;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .products2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .heading2 {
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 20px;
+  }
+  
+  .product {
+    width: calc(30% - 20px);
+    text-align: center;
+    margin-bottom: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .product img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    height: 300px;
+  }
+  
+  .product h3 {
+    margin-top: 10px;
+  }
+  
+  .product span {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #1877b6;
+  }
+  
+  .product button {
+    background-color: #3498db;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .product button:hover {
+    background-color: #2980b9;
+  }
+.heading2{
+  width: 100%; /* Ensure the heading spans the entire width */
+  margin-bottom: 20px; 
+}
+.home2 {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), url(../images/hero.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+}
+
+.home2 .content2 h1 {
+  font-size: 4rem;
+  text-transform: uppercase;
+  color: var(--font);
+}
+
+.home2 .content2 p {
+  font-size: 2rem;
+  font-weight: lighter;
+  color: #eee;
+  line-height: 1.8;
+  padding: 1rem 0;
+}
+#contact-form {
+  background-color: #f2f5ea;
+  padding: 20px;
+  margin: 20px;
+  border-radius: 50px;
+  box-shadow: 0 0 10px rgba(48, 37, 37, 0.1);
+  max-width: 700px; /* Adjust as needed */
+  max-height: 800px;
+  margin: auto;
+}
+
+#contact-form label {
+  display: block;
+  margin: 10px 0;
+  font-weight: bold;
+  color: #333;
+}
+
+#contact-form input, #contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+#contact-form button {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#contact-form button:hover {
+  background-color: #555;
+}
+.about-us {
+  padding: 5rem 10%;
+  font-size: 2rem;
+}
+
+
+
+.about-us p {
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+/* Add this to your existing CSS */
+
+.about-us {
+  background-color: #0b0b0b;
+  padding: 2rem 0;
+}
+
+.about-us .content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.about-us p {
+  margin-bottom: 1.5rem;
+}
